@@ -28,6 +28,6 @@ Devices for Wakeup can be defined by adding them to the `devices` section in the
 }
 ```
 
-Originally inspired by ("node_wake_on_lan":https://github.com/agnat/node_wake_on_lan) from ("agnat":https://github.com/agnat/). 
+Originally inspired by ["node_wake_on_lan"](https://github.com/agnat/node_wake_on_lan). 
 
 
