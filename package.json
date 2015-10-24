@@ -1,0 +1,28 @@
+{
+  "name": "pimatic-wakeonlan",
+  "description": "Wake up devices on your network via Pimatic",
+  "author": "Thorsten Reichelt (thost96) <info@thorstenreichelt.de>",
+  "main": "wakeonlan",
+  "files": [
+    "wakeonlan.coffee",
+    "wakeonlan-config-schema.coffee",
+    "device-config-schema.coffee"
+  ],
+  "version": "0.0.1",
+  "homepage": "http://github.com/thost96/pimatic-wakeonlan/",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/thost96/pimatic-wakeonlan.git"
+  },
+  "configSchema": "wakeonlan-config-schema.coffee",
+  "dependencies": {
+    "wake_on_lan": "0.0.9"
+  },
+  "peerDependencies": {
+    "pimatic": "0.8.*"
+  },
+  "engines": {
+    "node": ">0.8.x",
+    "npm": ">1.1.x"
+  }
+}
