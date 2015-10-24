@@ -1,11 +1,16 @@
 pimatic-wakeonlan
 =======================
 
-Plugin to Wake up you network devices
+Plugin to Wake up you network devices using Pimatic
+
+Screenshots
+-----------
+[![Screenshot 1][screen1_thumb]](screenshot.png)
+[screen1_thumb]: screenshot.png?v=1
 
 Configuration
 -------------
-You can load the plugin by editing your `config.json`:
+You can load the plugin by editing your `config.json` and adding the following in the `plugins` section:
 
 ````json
 { 
@@ -13,7 +18,7 @@ You can load the plugin by editing your `config.json`:
 }
 ````
 
-Device to wakeup can be defined by adding them to the `devices` section in the config file. Set the `class`attribute to `WakeOnLanDevice`. For example:
+Devices for Wakeup can be defined by adding them to the `devices` section in the config file. Set the `class` attribute to `WakeOnLanDevice`. For example:
 ```json
 {
   "class": "WakeOnLanDevice",
