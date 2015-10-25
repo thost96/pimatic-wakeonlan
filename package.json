@@ -8,7 +8,7 @@
     "wakeonlan-config-schema.coffee",
     "device-config-schema.coffee"
   ],
-  "version": "0.0.1",
+  "version": "0.0.2",
   "homepage": "http://github.com/thost96/pimatic-wakeonlan/",
   "repository": {
     "type": "git",
@@ -16,7 +16,7 @@
   },
   "configSchema": "wakeonlan-config-schema.coffee",
   "dependencies": {
-    "wake_on_lan": "0.0.9"
+    "wake_on_lan": "0.0.*"
   },
   "peerDependencies": {
     "pimatic": "0.8.*"
