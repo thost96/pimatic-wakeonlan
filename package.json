@@ -16,7 +16,7 @@
   },
   "configSchema": "wakeonlan-config-schema.coffee",
   "dependencies": {
-    "wake_on_lan": "0.0.9"
+    "wake_on_lan": "0.0.*"
   },
   "peerDependencies": {
     "pimatic": "0.8.*"
