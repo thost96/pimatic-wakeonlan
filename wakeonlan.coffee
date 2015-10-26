@@ -5,6 +5,7 @@ module.exports = (env) ->
 
   #WakeOnLAN -> https://github.com/agnat/node_wake_on_lan
   wol = env.require 'wake_on_lan'
+  Promise.promisifyAll(wol)
 
   #WakeOnLan Plugin Class
   class WakeOnLan extends env.plugins.Plugin
@@ -42,14 +43,11 @@ module.exports = (env) ->
     
     #WakeOnLan Main Funktion -> npm wake_on_lan
     wakeUp: (mac) ->       
-      try 
-        #Run Wake with MAC Adress
-        wol.wake(mac)
+      #Run Wake with MAC Adress
+      return wol.wakeAsync(mac).then( =>
         #Returning Info to Console and Gui
-        env.logger.info "Device with mac " + mac + " was waked Up"
-      catch err
-        #Console Log error if occurs
-        env.logger.error err
+        env.logger.info "Device with mac " + mac + " was waked Up"        
+      )
     
     #Handle ButtonPressed Event
     buttonPressed: (buttonId) ->
@@ -60,9 +58,7 @@ module.exports = (env) ->
           #For Debuggin
           #env.logger.debug b.id
           #Run WakeUp with configured Mac
-          @wakeUp(@config.mac)
-
-          return Promise.resolve()
+          return @wakeUp(@config.mac)
 
       throw new Error("No button with the id #{buttonId} found")
       
