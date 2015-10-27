@@ -4,7 +4,7 @@ module.exports = (env) ->
   Promise = env.require 'bluebird'
 
   #WakeOnLAN -> https://github.com/agnat/node_wake_on_lan
-  wol = env.require 'wake_on_lan'
+  wol = require 'wake_on_lan'
   Promise.promisifyAll(wol)
 
   #WakeOnLan Plugin Class
