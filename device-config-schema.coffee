@@ -13,4 +13,8 @@ module.exports = {
 	  			description: "Button will been automatically created"
 	  			type: "array"
 	  			default: []
+	  		host:
+	  			description: "using IP instead of MAC"
+	  			type: "string"
+	  			default: ""
 }

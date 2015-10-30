@@ -1,11 +1,18 @@
 module.exports = (env) ->
 
-  # Require the  bluebird promise library
+  #Version 0.1.0
+
+  #Bluebird promise library
   Promise = env.require 'bluebird'
 
-  #WakeOnLAN -> https://github.com/agnat/node_wake_on_lan
+  #WakeOnLAN 
   wol = require 'wake_on_lan'
   Promise.promisifyAll(wol)
+
+  #Node-Arp 
+  arp = require 'node-arp'
+  Promise.promisifyAll(arp)
+
 
   #WakeOnLan Plugin Class
   class WakeOnLan extends env.plugins.Plugin
@@ -39,16 +46,25 @@ module.exports = (env) ->
       @config.buttons = [{"id": @id+"-btn","text": "WakeUp"}]
       #For Debuggin
       #env.logger.debug @config
-      super(config)     
-    
-    #WakeOnLan Main Funktion -> npm wake_on_lan
+
+      if (@config.host isnt "" and @config.mac is "FF:FF:FF:FF:FF:FF" or "")
+        #Get MAC if not defined
+        arp.getMACAsync(config.host).then((macc) ->
+          env.logger.info "Got MAC for Host " + config.host + ": " + macc
+          config.mac = macc        
+        )
+      super(config)  
+      
+
+    #WakeOnLan Main Funktion
     wakeUp: (mac) ->       
       #Run Wake with MAC Adress
-      return wol.wakeAsync(mac).then( =>
+      return wol.wakeAsync(mac).then(x: (mac) =>
         #Returning Info to Console and Gui
         env.logger.info "Device with mac " + mac + " was waked Up"        
       )
     
+
     #Handle ButtonPressed Event
     buttonPressed: (buttonId) ->
       for b in @config.buttons
