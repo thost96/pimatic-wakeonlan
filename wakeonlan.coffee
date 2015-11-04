@@ -1,6 +1,6 @@
 module.exports = (env) ->
 
-  #Version 0.1.0
+  #Version 0.2.0
 
   #Bluebird promise library
   Promise = env.require 'bluebird'
@@ -78,7 +78,6 @@ module.exports = (env) ->
 
       throw new Error("No button with the id #{buttonId} found")
       
-  # ###Finally
   # Create a instance of my plugin
   plugin = new WakeOnLan
   # and return it to the framework.
