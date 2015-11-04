@@ -6,7 +6,9 @@
   "files": [
     "wakeonlan.coffee",
     "wakeonlan-config-schema.coffee",
-    "device-config-schema.coffee"
+    "device-config-schema.coffee",
+	"icon.png",
+	"screenshot.png"
   ],
   "version": "0.1.0",
   "homepage": "http://github.com/thost96/pimatic-wakeonlan/",
@@ -14,6 +16,7 @@
     "type": "git",
     "url": "git://github.com/thost96/pimatic-wakeonlan.git"
   },
+  "icon": "icon.png",
   "configSchema": "wakeonlan-config-schema.coffee",
   "dependencies": {
     "wake_on_lan": "0.0.4",
