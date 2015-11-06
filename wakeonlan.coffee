@@ -2,8 +2,9 @@ module.exports = (env) ->
 
   #Version 0.2.0
 
-  #Bluebird promise library
   Promise = env.require 'bluebird'
+  assert = env.require 'cassert'  
+  M = env.matcher
 
   #WakeOnLAN 
   wol = require 'wake_on_lan'
@@ -27,6 +28,9 @@ module.exports = (env) ->
         configDef: deviceConfigDef.WakeOnLanDevice, 
         createCallback: (config) => new WakeOnLanDevice(config)
       })
+      #Register Action Handler for Rules
+      @framework.ruleManager.addActionProvider(new WakeOnLAnActionProvider(@framework, config))
+
 
   #WakeOnLanDevice Class
   class WakeOnLanDevice extends env.devices.ButtonsDevice
@@ -77,7 +81,67 @@ module.exports = (env) ->
           return @wakeUp(@config.mac)
 
       throw new Error("No button with the id #{buttonId} found")
+  
+
+  #WakeOnLAnActionProvider to provide wakeup / wol for rules
+  class WakeOnLAnActionProvider extends env.actions.ActionProvider
+  
+    constructor: (@framework, @config) ->
+      return
+
+    parseAction: (input, context) =>
+
+
+      # Helper to convert 'some text' to  some text
+      strToTokens = (str) => ["\"#{str}\""]
+
+      macTokens = strToTokens ""
       
+
+      setMac = (m, tokens) => macTokens = tokens
+
+      m = M(input, context)
+        .match(['wol ','wakeup ']).matchStringWithVars(setMac)
+
+      if m.hadMatch()
+        match = m.getFullMatch()
+
+        assert Array.isArray(macTokens)
+
+        return {
+          token: match
+          nextInput: input.substring(match.length)
+          actionHandler: new WakeOnLanActionHandler(
+            @framework, macTokens
+          )
+        }      
+
+
+  #WakeOnLanActionHanler to handle actions for provided rules
+  class WakeOnLanActionHandler extends env.actions.ActionHandler 
+
+    constructor: (@framework, @macTokens) ->
+
+    executeAction: (simulate, context) ->
+      
+      Promise.all( [
+        @framework.variableManager.evaluateStringExpression(@macTokens)
+      ]).then( ([mac]) =>
+               
+        console.log mac
+
+        if simulate
+          # just return a promise fulfilled with a description about what we would do.
+          #return __("would wakeup device \"%s\"", mac)
+        else 
+          env.logger.info "Device with mac " + mac + " was waked Up"
+          #wol.wakeAsync(mac).then(x: (macc) => 
+            
+          
+      )    
+
+  module.exports.WakeOnLanActionHandler = WakeOnLanActionHandler    
+
   # Create a instance of my plugin
   plugin = new WakeOnLan
   # and return it to the framework.
