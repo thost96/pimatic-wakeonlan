@@ -36,3 +36,7 @@ If you don't know the device mac address you also can use the device ip address.
   "host": "192.168.178.10"
 }
 ```
+
+Credits
+-------
+Icon made by <a href="http://www.freepik.com" title="Freepik">Freepik</a> is licensed <a href="https://www.iconfinder.com/icons/99841/lan_icon" title="free for non commercial use">free for non commercial use</a>.
