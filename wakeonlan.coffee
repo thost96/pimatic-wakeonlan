@@ -89,11 +89,11 @@ module.exports = (env) ->
 
     parseAction: (input, context) =>
       macTokens = null
-      setCommand = (m, tokens) => macTokens = tokens
+      setMac = (m, tokens) => macTokens = tokens
 
       m = M(input, context)
       .match(['wol ','wakeup '])
-      .matchStringWithVars(setCommand)
+      .matchStringWithVars(setMac)
 
       if m.hadMatch()
         match = m.getFullMatch()
