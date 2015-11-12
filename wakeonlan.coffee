@@ -90,26 +90,51 @@ module.exports = (env) ->
       return
 
     parseAction: (input, context) =>
+      console.log "input"
+      console.log input
+      #wol "00:26:2d:04:60:8e"
 
-
-      # Helper to convert 'some text' to  some text
+      console.log "context"
+      console.log context
+      
       strToTokens = (str) => ["\"#{str}\""]
+
+      console.log "strToTokens"
+      console.log strToTokens
+      #[Function]
 
       macTokens = strToTokens ""
       
+      console.log "macTokens"
+      console.log macTokens
+      #[ '""' ]
 
       setMac = (m, tokens) => macTokens = tokens
+      console.log "setMac"
+      console.log(setMac)  
+      #[Function]
 
       m = M(input, context)
         .match(['wol ','wakeup ']).matchStringWithVars(setMac)
 
       if m.hadMatch()
         match = m.getFullMatch()
+        console.log "match"
+        console.log match
+        #wol "00:26:2d:04:60:8e"
 
         assert Array.isArray(macTokens)
 
+        console.log "match.length"
+        console.log match.length
+        #23
+
+        console.log "input.substring"
+        console.log input.substring(match.length)
+        # (no output)
+
         return {
-          token: match
+          token: match          
           nextInput: input.substring(match.length)
           actionHandler: new WakeOnLanActionHandler(
             @framework, macTokens
@@ -123,19 +148,36 @@ module.exports = (env) ->
     constructor: (@framework, @macTokens) ->
 
     executeAction: (simulate, context) ->
-      
+      console.log "simulate"
+      console.log simulate
+      #undefined
+      console.log "context"
+      console.log context
+      #undefined
+      console.log "@macTokens"
+      console.log @macTokens
+      #[ '"00:26:2d:04:60:8e"' ]
+
       Promise.all( [
         @framework.variableManager.evaluateStringExpression(@macTokens)
       ]).then( ([mac]) =>
-               
+        console.log "mac"     
         console.log mac
+        #00:26:2d:04:60:8e
+
+        console.log "mac.length"
+        console.log mac.length
+        #17
 
         if simulate
           # just return a promise fulfilled with a description about what we would do.
           #return __("would wakeup device \"%s\"", mac)
         else 
-          env.logger.info "Device with mac " + mac + " was waked Up"
-          #wol.wakeAsync(mac).then(x: (macc) => 
+          wol.wake(mac, (macc) -> 
+            env.logger.info "Device with mac " + macc + " was waked Up"
+            console.log macc
+            #null
+          )
             
           
       )    

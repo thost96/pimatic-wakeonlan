@@ -1,0 +1,86 @@
+[90m19:58:34.600 2015-11-12 Thursday[39m
+[90m19:58:35.474[39m[32m [pimatic][39m[90m [39mStarting pimatic version 0.8.92
+[90m19:58:35.732[39m[32m [pimatic][39m[90m [39mLoading plugin: "pimatic-cron" (0.8.5)
+[90m19:58:35.808[39m[32m [pimatic][39m[90m [39mLoading plugin: "pimatic-mobile-frontend" (0.8.71)
+[90m19:58:35.939[39m[32m [pimatic][39m[90m [39mLoading plugin: "pimatic-wakeonlan" (0.1.0)
+[3mcoffee-cache: compiling coffee-script file "wakeonlan.coffee"...[23m[3mDone
+[23m[90m19:58:36.019[39m[32m [pimatic-cron][39m[90m [39mthe time is: Thu Nov 12 2015 19:58:36 GMT+0100 (CET)
+[90m19:58:36.035[39m[32m [pimatic][39m[90m [39mNew device "PC-Dad"...
+input
+wol "00:26:2d:04:60:8e"
+context
+{ autocomplete: [ ' minutes', ' for ', ' and ', ' or ' ],
+  format: [],
+  errors: [],
+  warnings: [],
+  elements: {},
+  variables: 
+   { 'pc-dad.button': 
+      { _device: [Object],
+        _attrName: 'button',
+        destroy: [Function],
+        _vars: [Object],
+        name: 'pc-dad.button',
+        type: 'attribute',
+        unit: undefined,
+        readonly: true,
+        _attrListener: [Function],
+        _deviceChangeListener: [Function],
+        _deviceDestroyListener: [Function],
+        value: null } },
+  functions: 
+   { min: { args: [Object], exec: [Function] },
+     max: { args: [Object], exec: [Function] },
+     avg: { args: [Object], exec: [Function] },
+     random: { args: [Object], exec: [Function] },
+     round: { args: [Object], exec: [Function] },
+     roundToNearest: { args: [Object], exec: [Function] },
+     timeFormat: { args: [Object], exec: [Function] },
+     timeDecimal: { args: [Object], exec: [Function] },
+     date: { args: [Object], exec: [Function] },
+     formatNumber: { args: [Object], exec: [Function] } },
+  addHint: [Function],
+  addError: [Function],
+  addWarning: [Function],
+  hasErrors: [Function],
+  getErrorsAsString: [Function],
+  addElements: [Function],
+  finalize: [Function] }
+strToTokens
+[Function]
+macTokens
+[ '""' ]
+setMac
+[Function]
+match
+wol "00:26:2d:04:60:8e"
+match.length
+23
+input.substring
+
+[90m19:58:38.454[39m[32m [pimatic][39m[90m [39mListening for HTTP-request on port 80...
+simulate
+undefined
+context
+undefined
+@macTokens
+[ '"00:26:2d:04:60:8e"' ]
+mac
+00:26:2d:04:60:8e
+mac.length
+17
+[90m19:59:00.050[39m[32m [pimatic][39m[90m [39m[31mrule wakeupalldevices error executing an action: Array.isArray result[39m
+[90m19:59:00.051[39m[32m [pimatic][39m[90m [39m[34mAssertionError: Array.isArray result[39m
+[90m19:59:00.051[39m[32m [pimatic][39m[90m>[39m[34m    at /home/thost96/pimatic-dev/node_modules/pimatic/lib/rules.coffee:897:15[39m
+[90m19:59:00.051[39m[32m [pimatic][39m[90m>[39m[34m    at tryCatcher (/home/thost96/pimatic-dev/node_modules/pimatic/node_modules/bluebird/js/main/util.js:26:23)[39m
+[90m19:59:00.051[39m[32m [pimatic][39m[90m>[39m[34m    at Promise._settlePromiseFromHandler (/home/thost96/pimatic-dev/node_modules/pimatic/node_modules/bluebird/js/main/promise.js:507:31)[39m
+[90m19:59:00.051[39m[32m [pimatic][39m[90m>[39m[34m    at Promise._settlePromiseAt (/home/thost96/pimatic-dev/node_modules/pimatic/node_modules/bluebird/js/main/promise.js:581:18)[39m
+[90m19:59:00.051[39m[32m [pimatic][39m[90m>[39m[34m    at Async._drainQueue (/home/thost96/pimatic-dev/node_modules/pimatic/node_modules/bluebird/js/main/async.js:128:12)[39m
+[90m19:59:00.051[39m[32m [pimatic][39m[90m>[39m[34m    at Async._drainQueues (/home/thost96/pimatic-dev/node_modules/pimatic/node_modules/bluebird/js/main/async.js:133:10)[39m
+[90m19:59:00.051[39m[32m [pimatic][39m[90m>[39m[34m    at Async.drainQueues (/home/thost96/pimatic-dev/node_modules/pimatic/node_modules/bluebird/js/main/async.js:15:14)[39m
+[90m19:59:00.051[39m[32m [pimatic][39m[90m>[39m[34m    at process._tickCallback (node.js:448:13)[39m
+[90m19:59:00.226[39m[32m [pimatic-wakeonlan][39m[90m [39mDevice with mac null was waked Up
+null
+[90m19:59:21.490[39m[32m [pimatic][39m[90m [39mFlushing database to disk, please wait...
+[90m19:59:21.595[39m[32m [pimatic][39m[90m [39mFlushing database to disk, please wait... Done.
+[90m19:59:21.595[39m[32m [pimatic][39m[90m [39mexiting...
