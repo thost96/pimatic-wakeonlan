@@ -10,8 +10,7 @@ module.exports = (env) ->
   wakeupCommand = Promise.promisify (require 'wake_on_lan').wake
 
   #Node-Arp 
-  arp = require 'node-arp'
-  Promise.promisifyAll(arp)
+  arpCommand = Promise.promisify (require 'node-arp').getMAC
 
 
   #WakeOnLan Plugin Class
@@ -52,7 +51,7 @@ module.exports = (env) ->
 
       if (@config.host isnt "" and @config.mac is "FF:FF:FF:FF:FF:FF" or "")
         #Get MAC if not defined
-        arp.getMACAsync(config.host).then((macc) ->
+        arpCommand(config.host).then((macc) ->
           env.logger.info "Got MAC for Host " + config.host + ": " + macc
           config.mac = macc        
         )
