@@ -10,7 +10,7 @@
 	"icon.png",
 	"screenshot.png"
   ],
-  "version": "0.1.0",
+  "version": "0.2.0",
   "homepage": "http://github.com/thost96/pimatic-wakeonlan/",
   "repository": {
     "type": "git",
