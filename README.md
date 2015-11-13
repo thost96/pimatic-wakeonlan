@@ -37,6 +37,16 @@ If you don't know the device mac address you also can use the device ip address.
 }
 ```
 
+Rule support
+------------
+You also can use the plugin within rules using `wol` or `wakeup` as command:
+
+```json
+IF {something} THEN wol "11:22:33:44:55:66" or
+IF {something} THEN wakeup "11:22:33:44:55:66" 
+```
+
+
 Credits
 -------
 Icon made by <a href="http://www.freepik.com" title="Freepik">Freepik</a> is licensed <a href="https://www.iconfinder.com/icons/99841/lan_icon" title="free for non commercial use">free for non commercial use</a>.
