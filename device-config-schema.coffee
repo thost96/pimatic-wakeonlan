@@ -9,7 +9,6 @@ module.exports = {
 	  			description: "MAC Address of the Host"
 	  			type: "string"
 	  			default: "FF:FF:FF:FF:FF:FF"
-					required: no
 	  		buttons:
 	  			description: "Button will been automatically created"
 	  			type: "array"
@@ -18,5 +17,4 @@ module.exports = {
 	  			description: "using IP instead of MAC"
 	  			type: "string"
 	  			default: ""
-					required: no
 }

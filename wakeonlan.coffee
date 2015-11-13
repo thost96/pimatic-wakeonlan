@@ -7,7 +7,7 @@ module.exports = (env) ->
   M = env.matcher
 
   #WakeOnLAN
-  wakeup = Promise.promisify (require 'wake_on_lan').wake
+  wakeupCommand = Promise.promisify (require 'wake_on_lan').wake
 
   #Node-Arp 
   arp = require 'node-arp'
@@ -62,9 +62,10 @@ module.exports = (env) ->
     #WakeOnLan Main Function
     wakeUp: (mac) ->       
       #Run Wake with MAC Address
-      return wakeup(mac).then(x: (mac) =>
+      return wakeupCommand(mac).then( ->
         #Returning Info to Console and Gui
         env.logger.info "Device with mac " + mac + " has been woken up"
+        return Promise.resolve()
       )
     
 
@@ -117,7 +118,8 @@ module.exports = (env) ->
           # just return a promise fulfilled with a description about what we would do.
           return __("would wakeup device \"#{mac}\"")
         else
-          return wakeup(mac).then( ->
+          return wakeupCommand(mac).then( ->
+            env.logger.info "Device with mac " + mac + " has been woken up"
             return __("Device with mac \"#{mac}\" has been woken up")
           )
       )    
