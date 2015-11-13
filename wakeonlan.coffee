@@ -6,9 +6,8 @@ module.exports = (env) ->
   assert = env.require 'cassert'  
   M = env.matcher
 
-  #WakeOnLAN 
-  wol = require 'wake_on_lan'
-  Promise.promisifyAll(wol)
+  #WakeOnLAN
+  wakeupCommand = Promise.promisify (require 'wake_on_lan').wake
 
   #Node-Arp 
   arp = require 'node-arp'
@@ -48,7 +47,7 @@ module.exports = (env) ->
       @name = @config.name        
       mac = config.mac
       @config.buttons = [{"id": @id+"-btn","text": "WakeUp"}]
-      #For Debuggin
+      #For Debugging
       #env.logger.debug @config
 
       if (@config.host isnt "" and @config.mac is "FF:FF:FF:FF:FF:FF" or "")
@@ -60,12 +59,13 @@ module.exports = (env) ->
       super(config)  
       
 
-    #WakeOnLan Main Funktion
+    #WakeOnLan Main Function
     wakeUp: (mac) ->       
-      #Run Wake with MAC Adress
-      return wol.wakeAsync(mac).then(x: (mac) =>
+      #Run Wake with MAC Address
+      return wakeupCommand(mac).then( ->
         #Returning Info to Console and Gui
-        env.logger.info "Device with mac " + mac + " was waked Up"        
+        env.logger.info "Device with mac " + mac + " has been woken up"
+        return Promise.resolve()
       )
     
 
@@ -75,111 +75,53 @@ module.exports = (env) ->
         if b.id is buttonId
           @_lastPressedButton = b.id
           @emit 'button', b.id
-          #For Debuggin
+          #For Debugging
           #env.logger.debug b.id
           #Run WakeUp with configured Mac
           return @wakeUp(@config.mac)
 
       throw new Error("No button with the id #{buttonId} found")
-  
+
 
   #WakeOnLAnActionProvider to provide wakeup / wol for rules
   class WakeOnLAnActionProvider extends env.actions.ActionProvider
-  
+
     constructor: (@framework, @config) ->
-      return
 
     parseAction: (input, context) =>
-      console.log "input"
-      console.log input
-      #wol "00:26:2d:04:60:8e"
-
-      console.log "context"
-      console.log context
-      
-      strToTokens = (str) => ["\"#{str}\""]
-
-      console.log "strToTokens"
-      console.log strToTokens
-      #[Function]
-
-      macTokens = strToTokens ""
-      
-      console.log "macTokens"
-      console.log macTokens
-      #[ '""' ]
-
+      macTokens = null
       setMac = (m, tokens) => macTokens = tokens
-      console.log "setMac"
-      console.log(setMac)  
-      #[Function]
 
       m = M(input, context)
-        .match(['wol ','wakeup ']).matchStringWithVars(setMac)
+      .match(['wol ','wakeup '])
+      .matchStringWithVars(setMac)
 
       if m.hadMatch()
         match = m.getFullMatch()
-        console.log "match"
-        console.log match
-        #wol "00:26:2d:04:60:8e"
-
-        assert Array.isArray(macTokens)
-
-        console.log "match.length"
-        console.log match.length
-        #23
-
-        console.log "input.substring"
-        console.log input.substring(match.length)
-        # (no output)
-
         return {
-          token: match          
+          token: match
           nextInput: input.substring(match.length)
-          actionHandler: new WakeOnLanActionHandler(
-            @framework, macTokens
-          )
-        }      
+          actionHandler: new WakeOnLanActionHandler(@framework, macTokens)
+        }
+      else
+        return null
 
 
   #WakeOnLanActionHanler to handle actions for provided rules
-  class WakeOnLanActionHandler extends env.actions.ActionHandler 
+  class WakeOnLanActionHandler extends env.actions.ActionHandler
 
     constructor: (@framework, @macTokens) ->
 
     executeAction: (simulate, context) ->
-      console.log "simulate"
-      console.log simulate
-      #undefined
-      console.log "context"
-      console.log context
-      #undefined
-      console.log "@macTokens"
-      console.log @macTokens
-      #[ '"00:26:2d:04:60:8e"' ]
-
-      Promise.all( [
-        @framework.variableManager.evaluateStringExpression(@macTokens)
-      ]).then( ([mac]) =>
-        console.log "mac"     
-        console.log mac
-        #00:26:2d:04:60:8e
-
-        console.log "mac.length"
-        console.log mac.length
-        #17
-
+      @framework.variableManager.evaluateStringExpression(@macTokens).then( (mac) =>
         if simulate
           # just return a promise fulfilled with a description about what we would do.
-          #return __("would wakeup device \"%s\"", mac)
-        else 
-          wol.wake(mac, (macc) -> 
-            env.logger.info "Device with mac " + macc + " was waked Up"
-            console.log macc
-            #null
+          return __("would wakeup device \"#{mac}\"")
+        else
+          return wakeupCommand(mac).then( ->
+            env.logger.info "Device with mac " + mac + " has been woken up"
+            return __("Device with mac \"#{mac}\" has been woken up")
           )
-            
-          
       )    
 
   module.exports.WakeOnLanActionHandler = WakeOnLanActionHandler    
