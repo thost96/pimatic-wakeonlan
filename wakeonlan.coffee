@@ -17,18 +17,23 @@ module.exports = (env) ->
   class WakeOnLan extends env.plugins.Plugin
 
     init: (app, @framework, @config) =>
-      
+
+      @wakeupOptions =
+        address: @config.broadcastAddress || "255.255.255.255"
+
       #Device Config Schema
       deviceConfigDef = require("./device-config-schema")
 
       #Register WakeOnLanDevice
       @framework.deviceManager.registerDeviceClass("WakeOnLanDevice", {
-        configDef: deviceConfigDef.WakeOnLanDevice, 
+        configDef: deviceConfigDef.WakeOnLanDevice,
         createCallback: (config) => new WakeOnLanDevice(config)
       })
       #Register Action Handler for Rules
       @framework.ruleManager.addActionProvider(new WakeOnLAnActionProvider(@framework, config))
 
+  # Create a instance of my plugin
+  plugin = new WakeOnLan
 
   #WakeOnLanDevice Class
   class WakeOnLanDevice extends env.devices.ButtonsDevice
@@ -61,7 +66,7 @@ module.exports = (env) ->
     #WakeOnLan Main Function
     wakeUp: (mac) ->       
       #Run Wake with MAC Address
-      return wakeupCommand(mac).then( ->
+      return wakeupCommand(mac, plugin.wakeupOptions).then( ->
         #Returning Info to Console and Gui
         env.logger.info "Device with mac " + mac + " has been woken up"
         return Promise.resolve()
@@ -117,7 +122,7 @@ module.exports = (env) ->
           # just return a promise fulfilled with a description about what we would do.
           return __("would wakeup device \"#{mac}\"")
         else
-          return wakeupCommand(mac).then( ->
+          return wakeupCommand(mac, plugin.wakeupOptions).then( ->
             env.logger.info "Device with mac " + mac + " has been woken up"
             return __("Device with mac \"#{mac}\" has been woken up")
           )
@@ -125,7 +130,5 @@ module.exports = (env) ->
 
   module.exports.WakeOnLanActionHandler = WakeOnLanActionHandler    
 
-  # Create a instance of my plugin
-  plugin = new WakeOnLan
   # and return it to the framework.
   return plugin

@@ -10,13 +10,19 @@ Screenshots
 
 Configuration
 -------------
-You can load the plugin by editing your `config.json` and adding the following in the `plugins` section:
+You can load the plugin by editing your `config.json` and adding the following in the `plugins` section. Optionally, you 
+can also set the `broadcastAddress` property to define the broadcast address, which is `255.255.255.255` by default. 
+This may be required if you have an IPv6 network or you are running pimatic on Windows as Windows only routes
+packets with the global broadcast address to the first network interface. For the latter case a network-specific 
+broadcast address may be specified to route packets to the appropriate network interface.
 
 ````json
 { 
    "plugin": "wakeonlan"
 }
 ````
+
+
 
 Devices for Wakeup can be defined by adding them to the `devices` section in the config file. Set the `class` attribute to `WakeOnLanDevice`. For example:
 ```json
