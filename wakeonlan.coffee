@@ -1,6 +1,6 @@
 module.exports = (env) ->
 
-  #Version 0.2.0
+  #Version 0.2.1
 
   Promise = env.require 'bluebird'
   assert = env.require 'cassert'  
