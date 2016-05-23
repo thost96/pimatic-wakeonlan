@@ -38,14 +38,14 @@ module.exports = (env) ->
   #WakeOnLanDevice Class
   class WakeOnLanDevice extends env.devices.ButtonsDevice
 
-    #Avaible Actions:
+    #Available Actions:
     actions:
       buttonPressed:
         params:
           buttonId:
             type: "string"
 
-    #Initiaise ButtonsDevice and create button if not defined
+    #Initialise ButtonsDevice and create button if not defined
     constructor: (@config) ->
       @id = @config.id
       @name = @config.name        
@@ -59,8 +59,12 @@ module.exports = (env) ->
           env.logger.info "Got MAC for Host " + config.host + ": " + mac
           config.mac = mac       
         )
-      super(config)  
-      
+      super(config)
+
+
+    #Destroy ButtonsDevice
+    destroy: () ->
+      super()
 
     #WakeOnLan Main Function
     wakeUp: (mac) ->       
