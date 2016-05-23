@@ -30,7 +30,7 @@ module.exports = (env) ->
         createCallback: (config) => new WakeOnLanDevice(config)
       })
       #Register Action Handler for Rules
-      @framework.ruleManager.addActionProvider(new WakeOnLAnActionProvider(@framework, config))
+      @framework.ruleManager.addActionProvider(new WakeOnLAnActionProvider(@framework, @config))
 
   # Create a instance of my plugin
   plugin = new WakeOnLan
@@ -38,30 +38,33 @@ module.exports = (env) ->
   #WakeOnLanDevice Class
   class WakeOnLanDevice extends env.devices.ButtonsDevice
 
-    #Avaible Actions:
+    #Available Actions:
     actions:
       buttonPressed:
         params:
           buttonId:
             type: "string"
 
-    #Initiaise ButtonsDevice and create button if not defined
+    #Initialise ButtonsDevice and create button if not defined
     constructor: (@config) ->
-      @id = config.id
+      @id = @config.id
       @name = @config.name        
-      mac = config.mac
       @config.buttons = [{"id": @id+"-btn","text": "WakeUp"}]
       #For Debugging
       #env.logger.debug @config
-
+      config = @config
       if (@config.host isnt "" and @config.mac is "FF:FF:FF:FF:FF:FF" or "")
         #Get MAC if not defined
-        arpCommand(config.host).then((macc) ->
-          env.logger.info "Got MAC for Host " + config.host + ": " + macc
-          config.mac = macc        
+        arpCommand(config.host).then((mac) ->
+          env.logger.info "Got MAC for Host " + config.host + ": " + mac
+          config.mac = mac       
         )
-      super(config)  
-      
+      super(config)
+
+
+    #Destroy ButtonsDevice
+    destroy: () ->
+      super()
 
     #WakeOnLan Main Function
     wakeUp: (mac) ->       
