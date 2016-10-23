@@ -1,7 +1,5 @@
 module.exports = (env) ->
 
-  #Version 0.9.2
-
   Promise = env.require 'bluebird'
   assert = env.require 'cassert'  
   M = env.matcher

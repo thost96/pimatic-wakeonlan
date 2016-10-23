@@ -7,8 +7,8 @@ Plugin to Wake up you network devices using Pimatic
 
 ## Screenshots
 
-[![Screenshot 1][screen1_thumb]](https://github.com/thost96/pimatic-wakeonlan/blob/master/assets/screenshot.png)
-[screen1_thumb]: https://github.com/thost96/pimatic-wakeonlan/blob/master/screenshot.png?v=1
+[![Screenshot 1][screen1_thumb]](https://raw.githubusercontent.com/thost96/pimatic-wakeonlan/master/assets/screenshot.png)
+[screen1_thumb]: https://raw.githubusercontent.com/thost96/pimatic-wakeonlan/master/assets/screenshot.png?v=1
 
 ## Plugin Configuration
 

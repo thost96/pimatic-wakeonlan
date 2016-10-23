@@ -1,5 +1,8 @@
 # Release History
 
+* 20161023, v0.9.3
+	* Fixed screenshot link
+
 * 20161023, v0.9.2
 	* Added HISTORY.md
 	* Updated README.md
