@@ -7,11 +7,13 @@
     "wakeonlan.coffee",
     "wakeonlan-config-schema.coffee",
     "device-config-schema.coffee",
-    "icon.png",
-    "screenshot.png",
-    "LICENSE"
+    "assets/icon.png",
+    "assets/screenshot.png",
+    "LICENSE",
+    "HISTORY.md",
+    "README.md"
   ],
-  "version": "0.9.1",
+  "version": "0.9.2",
   "license": "GPL-2.0",
   "homepage": "http://github.com/thost96/pimatic-wakeonlan/",
   "repository": {
