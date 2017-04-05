@@ -1,4 +1,4 @@
-# pimatic-wakeonlan
+![Icon](https://raw.githubusercontent.com/thost96/pimatic-wakeonlan/master/assets/icon.png) # pimatic-wakeonlan
 
 [![npm version](https://badge.fury.io/js/pimatic-wakeonlan.svg)](http://badge.fury.io/js/pimatic-wakeonlan)
 [![dependencies status](https://david-dm.org/thost96/pimatic-wakeonlan/status.svg)](https://david-dm.org/thost96/pimatic-wakeonlan)
@@ -7,8 +7,7 @@ Plugin to Wake up you network devices using Pimatic
 
 ## Screenshots
 
-[![Screenshot 1][screen1_thumb]](https://raw.githubusercontent.com/thost96/pimatic-wakeonlan/master/assets/screenshot.png)
-[screen1_thumb]: https://raw.githubusercontent.com/thost96/pimatic-wakeonlan/master/assets/screenshot.png?v=1
+![Screenshot 1](https://raw.githubusercontent.com/thost96/pimatic-wakeonlan/master/assets/screenshot.png)
 
 ## Plugin Configuration
 
@@ -54,7 +53,7 @@ You also can use the plugin within rules using `wol` or `wakeup` as command:
 
 # History
 
-See [Release History](https://github.com/thost96/pimatic-wmi/blob/master/HISTORY.md).
+See [Release History](https://github.com/thost96/pimatic-wakeonlan/blob/master/HISTORY.md).
 
 # License 
 

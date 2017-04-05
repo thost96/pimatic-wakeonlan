@@ -1,5 +1,8 @@
 # Release History
 
+* 20170405 >> v0.9.4
+	* fixed README.md
+
 * 20161023, v0.9.3
 	* Fixed screenshot link
 
