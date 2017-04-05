@@ -24,7 +24,7 @@
   "configSchema": "wakeonlan-config-schema.coffee",
   "dependencies": {
     "wake_on_lan": "0.0.4",
-    "cjson": "0.3.0",
+    "cjson": "0.4.0",
     "node-arp": "1.0.5"
   },
   "peerDependencies": {
