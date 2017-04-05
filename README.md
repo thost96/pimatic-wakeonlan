@@ -1,4 +1,4 @@
-![Icon](https://raw.githubusercontent.com/thost96/pimatic-wakeonlan/master/assets/icon.png) # pimatic-wakeonlan
+#![Icon](https://raw.githubusercontent.com/thost96/pimatic-wakeonlan/master/assets/icon.png) pimatic-wakeonlan
 
 [![npm version](https://badge.fury.io/js/pimatic-wakeonlan.svg)](http://badge.fury.io/js/pimatic-wakeonlan)
 [![dependencies status](https://david-dm.org/thost96/pimatic-wakeonlan/status.svg)](https://david-dm.org/thost96/pimatic-wakeonlan)
