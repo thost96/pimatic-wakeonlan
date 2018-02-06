@@ -1,5 +1,8 @@
 # Release History
 
+* 20180206 >> v0.9.5
+	* added Travis CI
+
 * 20170405 >> v0.9.4
 	* fixed README.md
 

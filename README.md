@@ -2,6 +2,7 @@
 
 [![npm version](https://badge.fury.io/js/pimatic-wakeonlan.svg)](http://badge.fury.io/js/pimatic-wakeonlan)
 [![dependencies status](https://david-dm.org/thost96/pimatic-wakeonlan/status.svg)](https://david-dm.org/thost96/pimatic-wakeonlan)
+[![Build Status](https://travis-ci.org/thost96/pimatic-wakeonlan.svg?branch=master)](https://travis-ci.org/thost96/pimatic-wakeonlan)
 
 Plugin to Wake up you network devices using Pimatic
 
