@@ -25,7 +25,7 @@
   "dependencies": {
     "wake_on_lan": "1.0.0",
     "cjson": "0.3.0",
-    "node-arp": "1.0.5"
+    "node-arp": "1.0.6"
   },
   "peerDependencies": {
     "pimatic": ">=0.8.0 <1.0.0"
