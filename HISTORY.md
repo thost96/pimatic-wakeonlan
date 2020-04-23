@@ -1,5 +1,9 @@
 # Release History
 
+* 20200423 >> v0.9.6
+	* removed cjson from dependencies
+	* updated dependencies to newer versions
+
 * 20180206 >> v0.9.5
 	* added Travis CI
 
