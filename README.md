@@ -58,7 +58,7 @@ See [Release History](https://github.com/thost96/pimatic-wakeonlan/blob/master/H
 
 # License 
 
-Copyright (c) 2016, Thorsten Reichelt. All rights reserved.
+Copyright (c) thost96. All rights reserved.
 
 License: [GPL-2.0](https://github.com/thost96/pimatic-wakeonlan/blob/master/LICENSE).
 
