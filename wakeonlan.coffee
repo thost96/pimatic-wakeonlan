@@ -25,7 +25,7 @@ module.exports = (env) ->
       #Register WakeOnLanDevice
       @framework.deviceManager.registerDeviceClass("WakeOnLanDevice", {
         configDef: deviceConfigDef.WakeOnLanDevice,
-        createCallback: (config) => new WakeOnLanDevice(config)
+        createCallback: (config) -> new WakeOnLanDevice(config)
       })
       #Register Action Handler for Rules
       @framework.ruleManager.addActionProvider(new WakeOnLAnActionProvider(@framework, @config))
@@ -95,7 +95,7 @@ module.exports = (env) ->
 
     parseAction: (input, context) =>
       macTokens = null
-      setMac = (m, tokens) => macTokens = tokens
+      setMac = (m, tokens) -> macTokens = tokens
 
       m = M(input, context)
       .match(['wol ','wakeup '])
@@ -118,7 +118,7 @@ module.exports = (env) ->
     constructor: (@framework, @macTokens) ->
 
     executeAction: (simulate, context) ->
-      @framework.variableManager.evaluateStringExpression(@macTokens).then( (mac) =>
+      @framework.variableManager.evaluateStringExpression(@macTokens).then( (mac) ->
         if simulate
           # just return a promise fulfilled with a description about what we would do.
           return __("would wakeup device \"#{mac}\"")

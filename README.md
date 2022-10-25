@@ -19,32 +19,30 @@ This may be required if you have an IPv6 network or you are running pimatic on W
     "plugin": "wakeonlan"
   }
 
-
 ## Device Configuration
 
 Devices for Wakeup can be defined by adding them to the `devices` section in the config file or using the device tab on the mobile frontend. Set the `class` attribute to `WakeOnLanDevice`. For example:
 
-	{
-  		"class": "WakeOnLanDevice",
-  		"id": "pc-dad",
-  		"name": "PC-Dad",
-		"mac": "11:22:33:44:55:66"
-	}
+  {
+      "class": "WakeOnLanDevice",
+      "id": "pc-dad",
+      "name": "PC-Dad",
+    "mac": "11:22:33:44:55:66"
+  }
 
 If you don't know the device mac address you also can use the device ip address. For example:
 
-	{
-  		"class": "WakeOnLanDevice",
-  		"id": "pc-dad",
-  		"name": "PC-Dad",
-  		"host": "192.168.178.10"
-	}
+  {
+      "class": "WakeOnLanDevice",
+      "id": "pc-dad",
+      "name": "PC-Dad",
+      "host": "192.168.178.10"
+  }
 
 | Property          | Default  | Type    | Description                                 |
 |:------------------|:---------|:--------|:--------------------------------------------|
-| mac              	| -        | String  | MAC address of destination host|
-| host 				      | - 	     | String  | IP address or hostname of destination host|
-
+| mac               | -        | String  | MAC address of destination host|
+| host              | -        | String  | IP address or hostname of destination host|
 
 ## Rule support
 You also can use the plugin within rules using `wol` or `wakeup` as command:

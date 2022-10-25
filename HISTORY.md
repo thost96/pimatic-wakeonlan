@@ -1,62 +1,62 @@
 # Release History
 
 * 20200428 >> v0.9.7 
-	* added automated npm publish process to git repository
+  * added automated npm publish process to git repository
 
 * 20200423 >> v0.9.6
-	* removed cjson from dependencies
-	* updated dependencies to newer versions
+  * removed cjson from dependencies
+  * updated dependencies to newer versions
 
 * 20180206 >> v0.9.5
-	* added Travis CI
+  * added Travis CI
 
 * 20170405 >> v0.9.4
-	* fixed README.md
+  * fixed README.md
 
 * 20161023, v0.9.3
-	* Fixed screenshot link
+  * Fixed screenshot link
 
 * 20161023, v0.9.2
-	* Added HISTORY.md
-	* Updated README.md
+  * Added HISTORY.md
+  * Updated README.md
 
 * 20160523, v0.9.1
-	* Added fix for pimatic v0.9
-	* Added LICENSE
-	* Added destroy function
-	* Fixed image link for npm
-	* Updated dependencies for pimatic v0.9
+  * Added fix for pimatic v0.9
+  * Added LICENSE
+  * Added destroy function
+  * Fixed image link for npm
+  * Updated dependencies for pimatic v0.9
 
 * 20151120, v0.2.1
-	* Added broadcast address for windows hosts (merged from mwittig)
-	* Updated README.md
+  * Added broadcast address for windows hosts (merged from mwittig)
+  * Updated README.md
 
 * 20151113, v0.2.0
-	* Added rule support for pimatic
-	* Updated README.md (Credits)
-	* Updated Node-arp usage
-	* Fixed rule handling (merged from mwittig)
+  * Added rule support for pimatic
+  * Updated README.md (Credits)
+  * Updated Node-arp usage
+  * Fixed rule handling (merged from mwittig)
 
 * 20151104, v0.2.0
-	* Added Icon.PNG
-	* Updated .gitattributes
-	* Updated device-config-schema.coffee
+  * Added Icon.PNG
+  * Updated .gitattributes
+  * Updated device-config-schema.coffee
 
 * 20151102, v0.1.1
-	* Updated README.md
+  * Updated README.md
 
 * 20151030, v0.1.0
-	* Updated README.md
-	* Updated device-config-schema.coffee
-	* Added Node-arp
+  * Updated README.md
+  * Updated device-config-schema.coffee
+  * Added Node-arp
 
 * 20151027, v0.0.4
-	* Fixed error handling
+  * Fixed error handling
 
 * 20151025, v0.0.2
-	* Fixed dependencies
-	* Added cjson 
+  * Fixed dependencies
+  * Added cjson 
 
 * 20151024, v0.0.1
-	* Intial version
-	* Updated README.md
+  * Intial version
+  * Updated README.md
