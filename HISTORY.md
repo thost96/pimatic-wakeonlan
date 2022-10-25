@@ -1,7 +1,7 @@
 # Release History
 
 * 20200428 >> v0.9.7 
-	* added automated npm publish process to git repo
+	* added automated npm publish process to git repository
 
 * 20200423 >> v0.9.6
 	* removed cjson from dependencies
@@ -30,7 +30,6 @@
 * 20151120, v0.2.1
 	* Added broadcast address for windows hosts (merged from mwittig)
 	* Updated README.md
-	* 
 
 * 20151113, v0.2.0
 	* Added rule support for pimatic
@@ -39,7 +38,7 @@
 	* Fixed rule handling (merged from mwittig)
 
 * 20151104, v0.2.0
-	* Added Icon.png
+	* Added Icon.PNG
 	* Updated .gitattributes
 	* Updated device-config-schema.coffee
 

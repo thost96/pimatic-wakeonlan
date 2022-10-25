@@ -12,12 +12,12 @@ Plugin to Wake up you network devices using Pimatic
 
 ## Plugin Configuration
 
-Optionally, you can also set the `broadcastAddress` property to define the broadcast address, which is `255.255.255.255` by default. 
+Optionally, you can also set the `broadcastAddress` property to define the broadcast address, which is `255.255.255.255` by default.
 This may be required if you have an IPv6 network or you are running pimatic on Windows as Windows only routes packets with the global broadcast address to the first network interface. For the latter case a network-specific broadcast address may be specified to route packets to the appropriate network interface.
 
-	{ 
-   		"plugin": "wakeonlan"
-	}
+  {
+    "plugin": "wakeonlan"
+  }
 
 
 ## Device Configuration
@@ -43,20 +43,20 @@ If you don't know the device mac address you also can use the device ip address.
 | Property          | Default  | Type    | Description                                 |
 |:------------------|:---------|:--------|:--------------------------------------------|
 | mac              	| -        | String  | MAC address of destination host|
-| host 				| - 	   | String  | IP address or hostname of destination host|
+| host 				      | - 	     | String  | IP address or hostname of destination host|
 
 
 ## Rule support
 You also can use the plugin within rules using `wol` or `wakeup` as command:
 
 `WHEN {...} THEN wol "11:22:33:44:55:66"` or
-`WHEN {...} THEN wakeup "11:22:33:44:55:66"` 
+`WHEN {...} THEN wakeup "11:22:33:44:55:66"`
 
-# History
+## History
 
 See [Release History](https://github.com/thost96/pimatic-wakeonlan/blob/master/HISTORY.md).
 
-# License 
+## License
 
 Copyright (c) thost96. All rights reserved.
 
