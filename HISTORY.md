@@ -1,6 +1,6 @@
 # Release History
 
-* 20200428 >> v0.9.7 
+* 20200428 >> v0.9.7
   * added automated npm publish process to git repository
 
 * 20200423 >> v0.9.6
@@ -55,7 +55,7 @@
 
 * 20151025, v0.0.2
   * Fixed dependencies
-  * Added cjson 
+  * Added cjson
 
 * 20151024, v0.0.1
   * Intial version
